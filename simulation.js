@@ -23,7 +23,7 @@ function setup(){
     for (let i = 0; i < N; i++)
         if (radialSpawn) {
             const angle = Math.random() * Math.PI * 2
-            const radius = Math.random() * Math.min(canvasWidth, canvasHeight) / 2
+            const radius = Math.sqrt(Math.random()) * Math.min(canvasWidth, canvasHeight) / 2
             bodies.push(new Body( canvasWidth / 2 + radius * Math.cos(angle), canvasHeight / 2 + radius * Math.sin(angle), 0, Math.random()))
         } else {
             bodies.push(new Body(Math.random() * canvasWidth, Math.random() * canvasHeight, 0, Math.random()))

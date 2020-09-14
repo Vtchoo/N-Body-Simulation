@@ -1,3 +1,6 @@
+// Gravitational constant G
+const G = .1
+
 class Body {
 
     position
@@ -13,6 +16,25 @@ class Body {
         this.mass = mass
     }
 
+    GetGravity(bodies = []) {
+        
+        const force = new Vector2(0, 0)
+        bodies.forEach(body => {
+            if (body != this) {
+                const dir = Vector2.Sub(body.position, this.position)
+                force.AddV(Vector2.Mult(dir, G * this.mass * body.mass / dir.MagSqr()))
+                
+            }
+        })
+        this.acceleration = Vector2.Mult(force, 1 / this.mass)
+    }
+
+    Update() {
+        this.velocity.AddV(this.acceleration)
+        this.position.AddV(this.velocity)
+    }
+
+
 
     //
     // Drawing functions (uses p5, discard if not using js)
@@ -22,7 +44,7 @@ class Body {
         translate(this.position.x, this.position.y)
         noStroke()
         fill('white')
-        circle(0, 0, this.mass + 5)
+        circle(0, 0, this.mass * 5)
         pop()
     }
 }

@@ -2,7 +2,7 @@
 const canvasWidth = window.innerWidth
 const canvasHeight = window.innerHeight
 
-const N = 20
+const N = 200
 const bodies = []
 
 var tree
@@ -30,11 +30,12 @@ function draw() {
 
     // Space background
     background(0)
-    fill('red')
-    circle(0,0,20)
 
     bodies.forEach(body => body.draw())
 
     tree.draw()
 }
 
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight)
+}

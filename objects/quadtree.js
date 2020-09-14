@@ -53,6 +53,8 @@ class QuadTree {
         const bodiesInsideBoundary = bodies.filter(body => this.CheckBoundary(body.position))
 
         // Adds N-Body specific data into the QuadTree
+        // this.mass = bodiesInsideBoundary.reduce((prev, body) => prev + body.mass, 0)
+        // this.centerOfMass = bodiesInsideBoundary.reduce((prev, body) => prev.AddV(Vector2.Mult(body.position, body.mass / this.mass)), new Vector2(0, 0))
         bodiesInsideBoundary.forEach(body => {
             this.mass += body.mass
             this.centerOfMass.AddV(Vector2.Mult(body.position, body.mass))
@@ -95,10 +97,10 @@ class QuadTree {
 
     draw() {
         push()
-        if(!this.subDivided){
-            fill('red')
-            circle(this.centerOfMass.x, this.centerOfMass.y, 10)
-        }
+        // if(!this.subDivided){
+        //     fill('red')
+        //     circle(this.centerOfMass.x, this.centerOfMass.y, 10)
+        // }
         noFill()
         stroke('white')
         rect(this.boundary.x, this.boundary.y, this.boundary.w, this.boundary.h)

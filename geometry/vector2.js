@@ -50,11 +50,11 @@ class Vector2 {
     }
 
     static Add(v1, v2) {
-        return new vector2(v1.x + v2.x, v1.y + v2.y)
+        return new Vector2(v1.x + v2.x, v1.y + v2.y)
     }
 
     static Sub(v1, v2) {
-        return new vector2(v1.x - v2.x, v1.y - v2.y)
+        return new Vector2(v1.x - v2.x, v1.y - v2.y)
     }
 
     static Mult(v, n) {
